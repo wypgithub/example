@@ -1,0 +1,21 @@
+.modal .trendchart{
+    float:left;
+    width:600px;
+    height:400px
+}
+.modal .trend_record{
+    float:left;
+    width:450px;
+    height:600px;
+}
+.modal .trend_record h4{
+
+    text-align: center;
+}
+.modal .trend_record .table{
+    width:445px;
+}
+.modal .trend_record .table th,
+.modal .trend_record .dataTable {
+    text-align:center;
+}

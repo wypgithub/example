@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>上虞经济技术开发区异味评价体系和监管平台</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/jquery.dataTables.min.css" />
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"
+            integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+            crossorigin="anonymous"
+    />
+
+    <!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
+    <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap-theme.min.css"
+            integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+            crossorigin="anonymous"
+    />
+
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+
+    <script src="/js/My97DatePicker/WdatePicker.js"></script>
+</head>
+<body>
+<div class="row-fluid">
+    <input type="text" id="MonthPicker" class="Wdate" onfocus="WdatePicker({lang:'zh-cn',dateFmt:'yyyy-MM'})" autocomplete="off" />
+    <select id = 'selectArea' style="width:160px; margin-right: 20px;">
+        <option id = "1">01-长征片区</option>
+        <option id = "2" disabled>02-银邦片区（在建）</option>
+        <option id = "3" disabled>03-新合成片区（在建）</option>
+        <option id = "4" disabled>04-新天龙片区（在建）</option>
+    </select>
+    <button class="button button-primary button-small">
+        查询
+    </button>
+    <div class="span12">
+        <table id="dataTable" class="display" style="width:100%"></table>
+    </div>
+</div>
+
+<div class="modal fade" id="trend" tabindex="-1" role="dialog" aria-labelledby="watchModalLabel" aria-hidden="true" >
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content" style="width: 1080px">
+            <div class="modal-header" style="display:inline-block" >
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="position: relative; float: right; padding:0%;margin-right:1.5%">&times;</button>
+            </div>
+            <div class="modal-body" id="watchModalBody" style="height: 500px;width: 1080px;">
+                <div id="trendchart" class="trendchart"></div>
+
+                <div id="record" class="trend_record">
+                    <h4 class="modal-title">臭气浓度超上限记录</h4>
+                    <input type="hidden" id="selectedLocationNO" />
+                    <table class="table table-hover" id="summaryrecordtable">
+                        <thead>
+                        <tr>
+                            <th>序号</th>
+                            <th>采样时间</th>
+                            <th>臭气浓度</th>
+                            <th>趋势</th>
+                        </tr>
+                        </thead>
+                        <tbody id="summaryrecord"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"
+></script>
+<script src="js/jquery.dataTables.js"></script>
+<script src="layer/layer.js"></script>
+<script src="js/utils.js"></script>
+<script src="js/Judge.js"></script>
+<script>
+    $(function () {
+        //初始查询本月
+        refresh(new Date())
+
+        $(".button-small").click(function () {
+            refresh(new Date($('#MonthPicker').val()))
+        })
+
+        /**
+         * 刷新数据
+         * @param date 查询月份
+         */
+        function refresh(date){
+            queryData(date, new Date(date.getFullYear(), date.getMonth() + 1, 0));
+        }
+    })
+</script>
+
+</body>
+</html>

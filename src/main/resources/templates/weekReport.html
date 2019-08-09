@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>上虞经济技术开发区异味评价体系和监管平台</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/jquery.dataTables.min.css" />
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"
+            integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+            crossorigin="anonymous"
+    />
+
+    <!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
+    <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap-theme.min.css"
+            integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+            crossorigin="anonymous"
+    />
+
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+
+    <script src="/js/My97DatePicker/WdatePicker.js"></script>
+</head>
+<body>
+<div class="row-fluid">
+    <div class="control">
+     <span style="font-size: 16px;color: #4A4A4A; margin-right: 10px" >
+      统计周
+    </span>
+        <input type="text" id="WeekPicker" class="Wdate" style="width:185px;" onfocus="WdatePicker({isShowWeek:true,lang:'zh-cn',firstDayOfWeek:1})" autocomplete="off" />
+        <select id = 'selectArea' style="width:160px; margin-right: 20px;">
+            <option id = "1">01-长征片区</option>
+            <option id = "2" disabled>02-银邦片区（在建）</option>
+            <option id = "3" disabled>03-新合成片区（在建）</option>
+            <option id = "4" disabled>04-新天龙片区（在建）</option>
+        </select>
+        <button class="button button-primary button-small" onclick="getMonthData()">
+            查询
+        </button>
+    </div>
+    <div class="span12" id="summaryFromTo"></div>
+    <div class="span12">
+        <table id="dataTable" class="display" style="width:100%"></table>
+    </div>
+</div>
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"
+></script>
+<script src="js/jquery.dataTables.js"></script>
+<script src="layer/layer.js"></script>
+<script src="js/utils.js"></script>
+<script src="js/Judge.js"></script>
+<script>
+    $(function () {
+        //初始查询本月
+        refresh(new Date())
+
+        $(".button-small").click(function () {
+            refresh(new Date($('#WeekPicker').val()))
+        })
+
+        /**
+         * 刷新数据
+         * @param date 查询月份
+         */
+        function refresh(date){
+            var times = date.getTime();
+            var day = date.getDay();
+            var oneDayTime = 24*60*60*1000 ;
+
+            queryData(new Date(times - (day - 1) * oneDayTime), new  Date(times + (7 - day) * oneDayTime));
+        }
+    })
+</script>
+
+</body>
+</html>

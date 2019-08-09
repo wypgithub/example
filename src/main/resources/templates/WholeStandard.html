@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>上虞经济技术开发区异味评价体系和监管平台</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/jquery.dataTables.min.css" />
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"
+            integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+            crossorigin="anonymous"
+    />
+
+    <!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
+    <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap-theme.min.css"
+            integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+            crossorigin="anonymous"
+    />
+
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+
+    <script src="/js/My97DatePicker/WdatePicker.js"></script>
+</head>
+<body>
+<div class="row-fluid">
+    <input type="text" id="WeekPicker" class="Wdate" style="width:185px;" onfocus="WdatePicker({isShowWeek:true,lang:'zh-cn',firstDayOfWeek:1})" autocomplete="off" />
+    <button class="button button-primary button-small">
+        查询
+    </button>
+    <div class="span12">
+        <table id="dataTable" class="display" style="width:100%"></table>
+    </div>
+
+    <div>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <h4 class="modal-title">园区厂界空气质量综合评价标准</h4>
+    </div>
+    <div>
+        <table class="display row-border" id="standardTable1">
+            <thead>
+            <tr>
+                <th>级数</th>
+                <th>评价等级</th>
+                <th>各厂界臭气浓度范围</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>0级</td>
+                <td>优</td>
+                <td>厂界值：均小于20</td>
+            </tr>
+            <tr>
+                <td>1级</td>
+                <td>良</td>
+                <td>厂界值：70%小于等于10且超出部分小于等于60</td>
+            </tr>
+            <tr>
+                <td>2级</td>
+                <td>轻度污染</td>
+                <td>厂界值：60%小于等于21且超出部分小于等于120</td>
+            </tr>
+            <tr>
+                <td>3级</td>
+                <td>中度污染</td>
+                <td>厂界值：60%小于等于61且超出部分小于等于200</td>
+            </tr>
+            <tr>
+                <td>4级</td>
+                <td>重度污染</td>
+                <td>厂界值：60%小于等于121且超出部分小于等于600</td>
+            </tr>
+            <tr>
+                <td>5级</td>
+                <td>严重污染</td>
+                <td>厂界值：60%数值大于600</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"
+></script>
+<script src="js/jquery.dataTables.js"></script>
+<script src="layer/layer.js"></script>
+<script src="js/utils.js"></script>
+<script src="js/wholeStandard.js"></script>
+</body>
+</html>
+
